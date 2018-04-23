@@ -19,7 +19,7 @@ let rpiFan = new RPIFanController({
 var app = express();
 var server = app.listen(4000, function()
 {
-    console.log('listening for requests on port 4000,');
+    console.log('Connected: Listening for requests on port 4000.');
 });
 
 // Static files
@@ -37,19 +37,6 @@ io.on('connection', (socket) =>
     //temperatureFinal = (sensorReading.temperature*9/5+32);
     //console.log(temperatureFinal);
 
-    // Handle chat event
-    socket.on('chat', function(data)
-	{
-        	// console.log(data);
-       		io.sockets.emit('chat', data);
-    	});
-
-
-    // Handle typing event
-    socket.on('typing', function(data)
-	{
-        	socket.broadcast.emit('typing', data);
-    	});
 
    //Handle temp event
    socket.on('temp',function(data)
@@ -57,23 +44,34 @@ io.on('connection', (socket) =>
 		//temperatureFinal, humidityFinal = readingTemp(sensor);
 		//temperatureFinal, humidityFinal = readingTemp(sensor);
 		//socket.broadcast.emit('temp',temperatureFinal);
+		console.log("Reading Temperature.");
 		sensorReading = readingTemp(sensor);
 		temperatureFinal = (sensorReading.temperature*9/5+32);
-		io.local.emit('temp', temperatureFinal);
+		humidityFinal=(sensorReading.humidity);
+		io.local.emit('temp', temperatureFinal,humidityFinal);
    	});
 
 socket.on('fan', function(data)
 	{
-        	console.log("Fan ON");
-		
+        	
+		console.log("Fan IN");
 		rpiFan.init();
-		// Turn the fan on 
-		rpiFan.toggleFan(true);
-		// Turn the fan off 
-		rpiFan.toggleFan(false);
+		
+		if(data){
+			// Turn the fan on 
+			rpiFan.toggleFan(true);
+			console.log("Fan ON");
+		}
+		else{
+			// Turn the fan off 
+			rpiFan.toggleFan(false);
+			rpiFan.dispose();
+			console.log("Fan OFF");
+		}
+		
        		io.sockets.emit('fan', data);
 		// Close the GPIO connection 
-		//rpiFan.dispose();
+		//
     	});
 
 });

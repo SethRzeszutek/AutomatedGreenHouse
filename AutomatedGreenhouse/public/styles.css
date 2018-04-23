@@ -134,7 +134,7 @@ label{
     width: 40%;
 }
 
-#thermostat {
+.thermostat {
     width: 350px;
     height: 350px;
     margin: 0 auto;
@@ -143,7 +143,14 @@ label{
     font-size: 75px;
     color: white;
     text-align: center;
-    line-height: 5;
+    line-height: 3;
+}
+
+#humidOutput{
+	font-size: 75px;
+	color: lblue;
+	text-align: center;
+    	line-height: 3;
 }
 
 #plantList{

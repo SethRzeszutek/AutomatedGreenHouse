@@ -31,7 +31,7 @@
                     <img id="fanImg" class="iconLarge" src="img/fanoff.png" alt="fanoff">
                 </div>
                 <div class="checkboxOrientation">
-                    <label id="fanControl" class="switch2"><input type="checkbox" onclick="changeImage(this,'fanImg','img/fanon.png','img/fanoff.png')"><span class="slider2 round"></span></label>
+                    <label id="fanControl" class="switch2"><input type="checkbox" id="fan" onclick="changeImage(this,'fanImg','img/fanon.png','img/fanoff.png')"><span class="slider2 round"></span></label>
                 </div>
             </div>
             <div id="iconbox">
@@ -44,9 +44,11 @@
             </div>
         </div>
         <div id="graphbox">
-            <div id="thermostat">
-                0.0° F
-            </div>
+            <button id="getTemp" class='thermostat'>
+                <div id="tempOutput"></div>
+		<div id="humidOuput"></div>
+            </button>
+	
         </div>
         <div id="plantList">
         </div>
@@ -68,6 +70,6 @@
     -->
 
     </body>
-    <script src="chat.js"></script>
+    <script src="/chat.js"></script>
     <!-- removed slash from before chat.js-->
 </html>

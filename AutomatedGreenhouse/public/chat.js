@@ -11,6 +11,7 @@ var message = document.getElementById('message'),
       output = document.getElementById('output'),
       feedback = document.getElementById('feedback'),
       tempOutput = document.getElementById('tempOutput'),
+      humidOutput = document.getElementById('humidOutput'),
 
       lightbox = document.getElementById("light"),
       waterbox = document.getElementById("water"),
@@ -27,6 +28,9 @@ document.getElementById("lightSwitch").onclick=function() {
   }
 */
 
+setInterval(function () {document.getElementById("getTemp").click();}, 10000);
+
+
 function changeImage(check, imageID ,picture1, picture2)
 {
   if (check.checked){
@@ -40,41 +44,27 @@ function changeImage(check, imageID ,picture1, picture2)
 
 
 // Emit events
-btn.addEventListener('click', function(){
-	//takes two parameters, title, data to be sent
- 	clientSocket.emit('chat', {message: message.value, handle: handle.value});
-  message.value = "";
-});
-
-message.addEventListener('keypress', function(){
-	clientSocket.emit('typing',handle.value);
-});
 
 btnTemp.addEventListener('click', function(){
+	
 	clientSocket.emit('temp',btnTemp.value);
+	
 });
 
 btnFan.addEventListener('click', function(){
 	clientSocket.emit('fan',btnTemp.value);
 });
 
-lightbox.addEventListener("change", function() { //add event listener for when checkbox changes
-    socket.emit("light", Number(this.checked)); //send button status to server (as 1 or 0)
+fanbox.addEventListener("fan", function() { //add event listener for when checkbox changes
+    socket.emit("fan", Number(this.checked)); //send button status to server (as 1 or 0)
   });
 
 
 // Listen for events
-clientSocket.on('chat', function(data){
-	feedback.innerHTML = "";
-    output.innerHTML += '<p><strong>' + data.handle + ': </strong>' + data.message + '</p>';
-});
-
-clientSocket.on('typing', function(data){
-	feedback.innerHTML = '<p><em>'+data+' is typing a message...</em><p>';
-});
-
-clientSocket.on('temp', function(data){
-	tempOutput.innerHTML = '<p><strong>'+data+' F</strong><p>';
+clientSocket.on('temp', function(data, data2){
+	tempOutput.innerHTML = "";
+	tempOutput.innerHTML = '<p><strong>'+data+'°</strong><p>';
+	humidOutput.innerHTML='<p><strong>'+data2+'°</strong><p>';
 });
 
 
