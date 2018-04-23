@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>WebScockets 101</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
+        <link href="styles.css" rel="stylesheet" />
+	
+    </head>
+    <body>
+        <div id="switchBox">
+            <div id="iconbox">
+                <div class="iconOrientation">
+                    <img id="lightImg" class="iconSmall" src="img/lightoff.png" alt="lightoff">
+                </div>
+                <div class="checkboxOrientation">
+                    <label id="light" class="switch"><input type="checkbox" onclick="changeImage(this,'lightImg','img/lighton.png','img/lightoff.png')"><span class="slider round"></span></label>
+                </div>
+            </div>
+        
+            <div id="iconbox">
+                <div class="iconOrientation">
+                    <img id="waterImg" class="iconSmall" src="img/wateroff.png" alt="wateroff">
+                </div>
+                <div class="checkboxOrientation">
+                    <label id="water" class="switch"><input type="checkbox" onclick="changeImage(this,'waterImg','img/wateron.png','img/wateroff.png')"><span class="slider round"></span></label>
+                </div>
+            </div>
+            <div id="iconbox">
+                <div class="iconOrientation">
+                    <img id="fanImg" class="iconLarge" src="img/fanoff.png" alt="fanoff">
+                </div>
+                <div class="checkboxOrientation">
+                    <label id="fanControl" class="switch2"><input type="checkbox" onclick="changeImage(this,'fanImg','img/fanon.png','img/fanoff.png')"><span class="slider2 round"></span></label>
+                </div>
+            </div>
+            <div id="iconbox">
+                <div class="iconOrientation">
+                    <img id="autoImg" class="iconLarge" src="img/gearoff.png" alt="gearoff">
+                </div>
+                <div class="checkboxOrientation">
+                    <label id="auto" class="switch2"><input type="checkbox" onclick="changeImage(this,'autoImg','img/gearon.png','img/gearoff.png')"><span class="slider2 round"></span></label>
+                </div>
+            </div>
+        </div>
+        <div id="graphbox">
+            <div id="thermostat">
+                0.0° F
+            </div>
+        </div>
+        <div id="plantList">
+        </div>
+        <div id="cameraFeed">
+        </div>
+    <!--
+        <div id="chat">
+            <div id="chat-window">
+                <div id="output"></div>
+		    <div id="tempOutput"></div>
+                <div id="feedback"></div>
+            </div>
+            <input id="handle" type="text" placeholder="Handle" />
+            <input id="message" type="text" placeholder="Message" />
+            <button id="send">Send</button>
+	        <button id="getTemp">Get Temperature</button>
+	        <button id="fan">Fan</button>
+        </div>
+    -->
+
+    </body>
+    <script src="chat.js"></script>
+    <!-- removed slash from before chat.js-->
+</html>
