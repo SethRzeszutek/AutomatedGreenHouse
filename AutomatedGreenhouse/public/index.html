@@ -44,13 +44,38 @@
             </div>
         </div>
         <div id="graphbox">
-            <button id="getTemp" class='thermostat'>
-                <div id="tempOutput"></div>
-		<div id="humidOuput"></div>
-            </button>
+		<input id="getTemp"class="thermostat" type="image" src="img/Temp.png" />
+            	<button id="getTemp" class='thermostat'>
+                	<div id="tempOutput"></div>
+			<div id="humidOutput"></div>
+            	</button>
 	
         </div>
         <div id="plantList">
+		<table style="border= 1px solid black">
+ 			<tr>
+       				<th>Plant Name</th>
+        			<th>Temperature</th>
+        			<th>Humidity</th>
+   			 </tr>
+		</table>
+		<table id="plantTable" style="border= 1px solid black">
+		</table>
+		<form id="inputForm">
+			<div class ="inputBox">
+ 		 		<input type="text" placeholder="Plant Name" id="plantName"><br>
+			</div>
+			<div class ="inputBox">
+  				<input type="text"  placeholder="Temperature" id="inputTemp"><br>
+			</div>
+			<div class ="inputBox">
+				<input type="text"   placeholder="Humidity" id="inputHumid"><br>
+			</div>
+  			<!--    <input type="submit" value="Submit">    -->
+		</form>
+		<button onclick="addToTable()">Add</button>
+
+
         </div>
         <div id="cameraFeed">
         </div>
@@ -71,5 +96,32 @@
 
     </body>
     <script src="/chat.js"></script>
+
+
+<script>
+function addToTable() {
+    	var table = document.getElementById("plantTable");
+	var plantName = document.getElementById("plantName").value;
+	var inputTemp = document.getElementById("inputTemp").value;
+	var inputHumid = document.getElementById("inputHumid").value;
+
+	if((plantName==""||plantName==null) || (inputTemp==""||inputTemp==null)&&(inputHumid=="number"||inputHumid==null))
+	{
+		alert("Check your input, empty spaces are not allowed!");
+	} else {
+    		var row = table.insertRow(0);
+    		var cell1 = row.insertCell(0);
+    		var cell2 = row.insertCell(1);
+		var cell3 = row.insertCell(2);
+    		cell1.innerHTML = plantName;
+    		cell2.innerHTML = inputTemp;
+		cell3.innerHTML = inputHumid;
+		document.getElementById("inputForm").reset();
+
+
+
+	}
+}
+</script>
     <!-- removed slash from before chat.js-->
 </html>

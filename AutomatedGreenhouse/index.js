@@ -46,27 +46,30 @@ io.on('connection', (socket) =>
 		//socket.broadcast.emit('temp',temperatureFinal);
 		console.log("Reading Temperature.");
 		sensorReading = readingTemp(sensor);
+		console.log(sensorReading);
 		temperatureFinal = (sensorReading.temperature*9/5+32);
 		humidityFinal=(sensorReading.humidity);
-		io.local.emit('temp', temperatureFinal,humidityFinal);
+		console.log(humidityFinal);
+		io.local.emit('temp', temperatureFinal);
+		io.local.emit('humid', humidityFinal);
    	});
 
 socket.on('fan', function(data)
 	{
         	
-		console.log("Fan IN");
+		//console.log("Fan IN");
 		rpiFan.init();
 		
 		if(data){
 			// Turn the fan on 
 			rpiFan.toggleFan(true);
-			console.log("Fan ON");
+			//console.log("Fan ON");
 		}
 		else{
 			// Turn the fan off 
 			rpiFan.toggleFan(false);
 			rpiFan.dispose();
-			console.log("Fan OFF");
+			//console.log("Fan OFF");
 		}
 		
        		io.sockets.emit('fan', data);

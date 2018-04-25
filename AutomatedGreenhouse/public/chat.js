@@ -28,6 +28,7 @@ document.getElementById("lightSwitch").onclick=function() {
   }
 */
 
+
 setInterval(function () {document.getElementById("getTemp").click();}, 10000);
 
 
@@ -39,6 +40,7 @@ function changeImage(check, imageID ,picture1, picture2)
     document.getElementById(imageID).src=picture2;
   }
 }
+
 
 
 
@@ -61,10 +63,13 @@ fanbox.addEventListener("fan", function() { //add event listener for when checkb
 
 
 // Listen for events
-clientSocket.on('temp', function(data, data2){
-	tempOutput.innerHTML = "";
+clientSocket.on('temp', function(data){
 	tempOutput.innerHTML = '<p><strong>'+data+'°</strong><p>';
-	humidOutput.innerHTML='<p><strong>'+data2+'°</strong><p>';
+});
+
+clientSocket.on('humid', function(data){
+	console.log(data);
+	humidOutput.innerHTML='<p><strong>'+data+'%</strong><p>';
 });
 
 
