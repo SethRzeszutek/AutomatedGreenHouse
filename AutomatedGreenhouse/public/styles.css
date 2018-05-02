@@ -1,4 +1,5 @@
 body{
+    position: center;
     font-family: 'Helvitica';
     /*background-color: #192530;*/
    background: ##192530 -moz-radial-gradient(top, #507aa0 0%, #192530 70%) no-repeat 50% 0%;
@@ -18,89 +19,30 @@ h3{
     position: relative;
     display: inline-block;
 }
-/*
-#chat{
-    max-width: 600px;
-    margin: 30px auto;
-    border: 1px solid #ddd;
-    box-shadow: 1px 3px 5px rgba(0,0,0,0.05);
-    border-radius: 2px;
+
+.flex-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /*flex-direction: column;*/
+  flex-wrap: wrap;
+ 
+
 }
 
-#chat-window{
-    height: 200px;;
-    overflow: auto;
-    background: #f9f9f9;
-}
-
-#output p{
-    padding: 14px 0px;
-    margin: 0 20px;
-    border-bottom: 1px solid #e9e9e9;
-    color: #555;
-}
-
-#tempOutput p{
-    padding: 14px 0px;
-    margin: 0 20px;
-    border-bottom: 1px solid #e9e9e9;
-    color: #555;
-}
-
-#feedback p{
-    color: #aaa;
-    padding: 14px 0px;
-    margin: 0 20px;
-}
-
-#output strong{
-    color: #575ed8;
-}
-
-input{
-    padding: 10px 20px;
-    box-sizing: border-box;
-    background: #eee;
-    border: 0;
-    display: block;
-    width: 100%;
-    background: #fff;
-    border-bottom: 1px solid #eee;
-    font-family: Nunito;
-    font-size: 16px;
-}
-
-button{
-    background: #575ed8;
-    color: #fff;
-    font-size: 18px;
-    border: 0;
-    padding: 12px 0;
-    width: 100%;
-    border-radius: 0 0 2px 2px;
-}
-*/
-
-/*
-label{
-    box-sizing: border-box;
-    display: block;
-    padding: 10px 20px;
-}
-*/
 
 
 
 #switchbox{
-    float:left;
-    padding: 10px;
+   /* float:left;#*/
     display: block;
+    padding: 10px;
     overflow:hidden;
 }
 
-#iconbox{
+.iconbox{
     float:left;
-    padding: 75px 50px 25px 75px;
+    padding: 75px 50px 25px 25px;
 }
 
 #iconOrientation{
@@ -127,32 +69,35 @@ label{
 }
 
 #graphbox{
-    float:left;
+    /*float:left;*/
     margin-top: 25px;
     display: block;
     /*background: white;*/
-    width: 40%;
+    /*width: 40%;*/
 }
 
 .thermostat {
     width: 350px;
     height: 350px;
     /*margin: 0 auto;*/
-    background: #181818;
+    background: url(img/Temp.png);
+	background-size: 350px 350px;
     border-radius: 50%;
     font-size: 75px;
     color: white;
+	cursor: pointer;
     text-align: center;
     
 }
+
 #tempOutput{
-	font-size: 75px;
-	color: white;
+	font-size: 55px;
+	color: #C0C0C0;
 	text-align: center;
     	line-height: 0;
 }
 #humidOutput{
-	font-size: 40px;
+	font-size: 30px;
 	color: #63b8ff;
 	text-align: center;
     	line-height: 0;
@@ -160,24 +105,71 @@ label{
 
 #plantList{
     float:left;
+	width: 575px;
+	height: 200px;
+	background: black;
     margin-top: 25px;
     display: block;
-    background: white;
-    width: 40%;
+	color: white;
+   	 width: 40%;
 }
-
+#plantTable{
+	width: 500px;
+	height: 130px;
+	color: white;
+	overflow: auto;
+}
+#inputForm{
+	position: bottom;
+}
 .inputBox{
 	float:left;
 }
 
-#cameraFeed{
-    float:left;
+#formButtons{
+	float:left;
+}
+#formBox{
+  float:left;
+	margin-left: 30px;
+}
+#cameraContainer{
     margin-top: 25px;
+    margin-left: 50px;
     display: block;
-    background: white;
+    /*background: white;*/
     width: 40%;
 }
+#imageUpdate{
+	/*margin-left: 50px;*/
+	/*margin-top: 40px;*/
+	border: 1px solid #ddd;
+    	border-radius: 4px;
+	width: 80%;
+}
 
+.buttons {
+  background: #507786;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.buttons:hover {
+  background: #6da4ba;
+  text-decoration: none;
+}
+
+#frame {
+	/*background: linear-gradient(to bottom right, #21A6FF,  #1EE894);*/
+	background: #507786;
+	border-radius: 28px;
+	width: 500px;
+	height: 300px;
+}
 
 
 /* The switch - the box around the slider */
@@ -307,3 +299,96 @@ input:checked + .slider2:before {
 .slider2.round:before {
   border-radius: 50%;
 }
+
+
+
+
+
+
+/*------------------------------FORM BOX-----------------------------*/
+/* define height and width of scrollable area. Add 16px to width for scrollbar          */
+div.tableContainer {
+  clear: both;
+ margin-top: 25px;
+  background: white;
+  border: 1px solid #507786;
+  height: 150px;
+  overflow: auto;
+  width: 540px;
+}
+
+/* Reset overflow value to hidden for all non-IE browsers. */
+html > body div.tableContainer {
+  overflow: hidden;
+  width: 540px;
+}
+
+/* define width of table. IE browsers only                 */
+div.tableContainer table {
+  float: left;
+  /* width: 740px */
+}
+
+/* define width of table. Add 16px to width for scrollbar.           */
+/* All other non-IE browsers.                                        */
+html > body div.tableContainer table {
+  width: 556px 
+}
+
+/* set table header to a fixed position. WinIE 6.x only                                       */
+/* In WinIE 6.x, any element with a position property set to relative and is a child of       */
+/* an element that has an overflow property set, the relative value translates into fixed.    */
+/* Ex: parent element DIV with a class of tableContainer has an overflow property set to auto */
+
+thead.fixedHeader tr {
+  position: relative;
+}
+
+/* set THEAD element to have block level attributes. All other non-IE browsers            */
+/* this enables overflow to work on TBODY element. All other non-IE, non-Mozilla browsers */
+
+/* make the TH elements pretty */
+thead.fixedHeader th {
+  background: #6996AD;
+  border-left: 1px solid #507786
+  border-right: 1px solid #507786;
+  border-top: 1px solid #507786;
+  font-weight: normal;
+  padding: 4px 3px;
+  text-align: left;
+}
+
+html > body tbody.scrollContent {
+   color: black;
+  display: block;
+  height: 150px;
+  overflow: auto;
+    width: 540px;
+}
+
+html > body thead.fixedHeader {
+  color: white;
+  display: table;
+  overflow: auto;
+  width: 100%;
+}
+
+/* make TD elements pretty. Provide alternating classes for striping the table */
+/* http://www.alistapart.com/articles/zebratables/                             */
+tbody.scrollContent td,
+tbody.scrollContent tr.normalRow td {
+  background: #fff;
+  border-bottom: none;
+  border-left: none;
+  border-right: 1px solid #ccc;
+  border-top: 1px solid #ddd;
+  padding: 2px 3px 3px 4px;
+}
+
+tbody.scrollContent tr.alternateRow td {
+  background: #eee;
+  border-bottom: none;
+  border-left: none;
+  border-right: 1px solid #ccc;
+  border-top: 1px solid #ddd;
+ 

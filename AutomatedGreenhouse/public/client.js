@@ -1,7 +1,6 @@
 
 // Make connection
 var clientSocket = io.connect('http://localhost:4000');
-
 // Query DOM
 var message = document.getElementById('message'),
       handle = document.getElementById('handle'),
@@ -12,22 +11,17 @@ var message = document.getElementById('message'),
       feedback = document.getElementById('feedback'),
       tempOutput = document.getElementById('tempOutput'),
       humidOutput = document.getElementById('humidOutput'),
+	btnUpdate = document.getElementById("getUpdate"),
 
       lightbox = document.getElementById("light"),
       waterbox = document.getElementById("water"),
       fanbox = document.getElementById("fan"),
       autobox = document.getElementById("auto");
 
-/*
-document.getElementById("lightSwitch").onclick=function() {
-    if(this.checked) {
-        document.getElementById("lightoffImg").src = "img/lighton.png";
-    } else {
-        document.getElementById("lightoffImg").src = "img/lightoff.png";   
-    }
-  }
-*/
+const imageUpdate = document.getElementById("imageUpdate");
 
+ 
+ 
 
 setInterval(function () {document.getElementById("getTemp").click();}, 10000);
 
@@ -42,7 +36,28 @@ function changeImage(check, imageID ,picture1, picture2)
 }
 
 
+function updateImg(imagePath) {
+    imageUpdate.src = `${imagePath}`;
+}
 
+/*
+function updateImg(tag, image) {
+    var element = document.getElementById(tag);
+    if (element) {
+	 //I want to create an image tag inside the anchorElement
+	removeElement("imageUpdate");
+        var img = document.createElement("img");
+        img.setAttribute("src", image, "class", "picture", "id", "imageUpdate");
+        element.appendChild(img);
+    }
+}
+
+function removeElement(tag) {
+    var elem = document.getElementById(tag);
+    elem.parentNode.removeChild(elem);
+    return false;
+}
+*/
 
 
 // Emit events
@@ -61,6 +76,10 @@ fanbox.addEventListener("fan", function() { //add event listener for when checkb
     socket.emit("fan", Number(this.checked)); //send button status to server (as 1 or 0)
   });
 
+btnUpdate.addEventListener('click', function(){
+	clientSocket.emit('updateImage',btnTemp.value);
+});
+
 
 // Listen for events
 clientSocket.on('temp', function(data){
@@ -68,11 +87,11 @@ clientSocket.on('temp', function(data){
 });
 
 clientSocket.on('humid', function(data){
-	console.log(data);
+	//console.log(data);
 	humidOutput.innerHTML='<p><strong>'+data+'%</strong><p>';
 });
 
-
+clientSocket.on('updateImage',updateImg);
 
 
 

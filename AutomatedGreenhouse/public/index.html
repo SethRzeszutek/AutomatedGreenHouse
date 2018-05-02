@@ -8,99 +8,106 @@
 	
     </head>
     <body>
-        <div id="switchBox">
-            <div id="iconbox">
-                <div class="iconOrientation">
-                    <img id="lightImg" class="iconSmall" src="img/lightoff.png" alt="lightoff">
+        <div class="flex-container">
+         	<div id="switchBox">
+                <div class="iconbox">
+                    <div class="iconOrientation">
+                        <img id="lightImg" class="iconSmall" src="img/lightoff.png" alt="lightoff">
+                    </div>
+                    <div class="checkboxOrientation">
+                        <label id="light" class="switch"><input type="checkbox" onclick="changeImage(this,'lightImg','img/lighton.png','img/lightoff.png')"><span class="slider round"></span></label>
+                    </div>
                 </div>
-                <div class="checkboxOrientation">
-                    <label id="light" class="switch"><input type="checkbox" onclick="changeImage(this,'lightImg','img/lighton.png','img/lightoff.png')"><span class="slider round"></span></label>
+            
+                <div class="iconbox">
+                    <div class="iconOrientation">
+                        <img id="waterImg" class="iconSmall" src="img/wateroff.png" alt="wateroff">
+                    </div>
+                    <div class="checkboxOrientation">
+                        <label id="water" class="switch"><input type="checkbox" onclick="changeImage(this,'waterImg','img/wateron.png','img/wateroff.png')"><span class="slider round"></span></label>
+                    </div>
+                </div>
+                <div class="iconbox">
+                    <div class="iconOrientation">
+                        <img id="fanImg" class="iconLarge" src="img/fanoff.png" alt="fanoff">
+                    </div>
+                    <div class="checkboxOrientation">
+                        <label id="fanControl" class="switch2"><input type="checkbox" id="fan" onclick="changeImage(this,'fanImg','img/fanon.png','img/fanoff.png')"><span class="slider2 round"></span></label>
+                    </div>
+                </div>
+                <div class="iconbox">
+                    <div class="iconOrientation">
+                        <img id="autoImg" class="iconLarge" src="img/gearoff.png" alt="gearoff">
+                    </div>
+                    <div class="checkboxOrientation">
+                        <label id="auto" class="switch2"><input type="checkbox" onclick="changeImage(this,'autoImg','img/gearon.png','img/gearoff.png')"><span class="slider2 round"></span></label>
+                    </div>
                 </div>
             </div>
-        
-            <div id="iconbox">
-                <div class="iconOrientation">
-                    <img id="waterImg" class="iconSmall" src="img/wateroff.png" alt="wateroff">
-                </div>
-                <div class="checkboxOrientation">
-                    <label id="water" class="switch"><input type="checkbox" onclick="changeImage(this,'waterImg','img/wateron.png','img/wateroff.png')"><span class="slider round"></span></label>
-                </div>
+            <div id="graphbox">
+                	<button id="getTemp" class='thermostat' >
+                        <div id="tempOutput"></div>
+    			        <div id="humidOutput"></div>
+                	</button>
             </div>
-            <div id="iconbox">
-                <div class="iconOrientation">
-                    <img id="fanImg" class="iconLarge" src="img/fanoff.png" alt="fanoff">
-                </div>
-                <div class="checkboxOrientation">
-                    <label id="fanControl" class="switch2"><input type="checkbox" id="fan" onclick="changeImage(this,'fanImg','img/fanon.png','img/fanoff.png')"><span class="slider2 round"></span></label>
-                </div>
+        <div id="formBox">
+            <div id="tableContainer" class="tableContainer">
+        		<table id="myTable" border="0" cellpadding="0" cellspacing="0" width="100%" class="scrollTable">
+        			<thead class="fixedHeader">
+        				<tr>
+        					<th width="16%">Plant Name</th>
+        					<th width="16%">Temperature</th>
+        					<th width="16%">Humidity</th>
+        				</tr>
+        			</thead>
+        		
+        		<table id="plantTable" border="0" cellpadding="0" cellspacing="0" width="100%" class="scrollTable">
+        			<thead class="fixedHeader">
+        				<tr>
+        				</tr>
+        			</thead>
+        		
+        			<tbody id="testCase" class="scrollContent">
+        				<tr>
+        					<td width="16%"></td>
+        					<td width="16%"></td>
+        					<td width="16%"></td>
+        				</tr>
+        			</tbody>
+                </table>
+        		</table>
+        	</div>
+        	<div>
+        		<form id="inputForm">
+        			<div class ="inputBox">
+         		 		<input type="text" placeholder="Plant Name" id="plantName"><br>
+        			</div>
+        			<div class ="inputBox">
+          				<input type="text"  placeholder="Temperature" id="inputTemp"><br>
+        			</div>
+        			<div class ="inputBox">
+        				<input type="text"   placeholder="Humidity" id="inputHumid"><br>
+        			</div>
+          			<!--    <input type="submit" value="Submit">    -->
+        		</form>
+        		<button class="formButtons buttons"  onclick="addToTable()">Add</button>
+			<button class="formButtons buttons"  onclick="addToTable()">Remove</button>
+			<button class="formButtons buttons"  onclick="addToTable()">Save</button>
             </div>
-            <div id="iconbox">
-                <div class="iconOrientation">
-                    <img id="autoImg" class="iconLarge" src="img/gearoff.png" alt="gearoff">
-                </div>
-                <div class="checkboxOrientation">
-                    <label id="auto" class="switch2"><input type="checkbox" onclick="changeImage(this,'autoImg','img/gearon.png','img/gearoff.png')"><span class="slider2 round"></span></label>
-                </div>
-            </div>
         </div>
-        <div id="graphbox">
-		<input id="getTemp"class="thermostat" type="image" src="img/Temp.png" />
-            	<button id="getTemp" class='thermostat'>
-                	<div id="tempOutput"></div>
-			<div id="humidOutput"></div>
-            	</button>
-	
-        </div>
-        <div id="plantList">
-		<table style="border= 1px solid black">
- 			<tr>
-       				<th>Plant Name</th>
-        			<th>Temperature</th>
-        			<th>Humidity</th>
-   			 </tr>
-		</table>
-		<table id="plantTable" style="border= 1px solid black">
-		</table>
-		<form id="inputForm">
-			<div class ="inputBox">
- 		 		<input type="text" placeholder="Plant Name" id="plantName"><br>
-			</div>
-			<div class ="inputBox">
-  				<input type="text"  placeholder="Temperature" id="inputTemp"><br>
-			</div>
-			<div class ="inputBox">
-				<input type="text"   placeholder="Humidity" id="inputHumid"><br>
-			</div>
-  			<!--    <input type="submit" value="Submit">    -->
-		</form>
-		<button onclick="addToTable()">Add</button>
-
-
-        </div>
-        <div id="cameraFeed">
-        </div>
-    <!--
-        <div id="chat">
-            <div id="chat-window">
-                <div id="output"></div>
-		    <div id="tempOutput"></div>
-                <div id="feedback"></div>
-            </div>
-            <input id="handle" type="text" placeholder="Handle" />
-            <input id="message" type="text" placeholder="Message" />
-            <button id="send">Send</button>
-	        <button id="getTemp">Get Temperature</button>
-	        <button id="fan">Fan</button>
-        </div>
-    -->
-
+            
+        <div id="cameraContainer">
+    			<img id="imageUpdate" alt="captured image" src=""/>
+    		<button id="getUpdate" class="buttons">Update</button>
+    	</div>
+    </div>
     </body>
-    <script src="/chat.js"></script>
+    <script src="/client.js"/></script>
 
 
 <script>
 function addToTable() {
-    	var table = document.getElementById("plantTable");
+    	var table = document.getElementById("testCase");
 	var plantName = document.getElementById("plantName").value;
 	var inputTemp = document.getElementById("inputTemp").value;
 	var inputHumid = document.getElementById("inputHumid").value;

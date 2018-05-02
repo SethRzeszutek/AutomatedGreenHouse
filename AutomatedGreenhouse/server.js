@@ -1,8 +1,54 @@
 var express = require('express');
 var socket = require('socket.io');
 
+
 var sensor = require('node-dht-sensor');
 var RPIFanController = require('rpi-fan-controller');
+var NodeWebcam = require( "node-webcam" );
+var x=1;
+
+
+var mysql      = require('mysql');
+var connection = mysql.createConnection({
+  host     : '35.231.27.196',
+  user     : 'root',
+  password : '',
+  database : 'plantlist',
+  //socketPath: '/cloudsql/sql-database-nodejs:us-east1:sql-instance'
+});
+
+
+// Log any errors connected to the db
+connection.connect(function(err){
+    if (err) console.log(err)
+})
+
+
+
+//Default options 
+var opts = {
+    //Picture related 
+    width: 1280,
+    height: 720,
+    quality: 100,
+    //Delay to take shot 
+    delay: 0,
+    //Save shots in memory 
+    saveShots: true,
+    // [jpeg, png] support varies 
+    // Webcam.OutputTypes 
+    output: "jpeg",
+    //Which camera to use 
+    //Use Webcam.list() for results 
+    //false for default device 
+    device: false,
+    // [location, buffer, base64] 
+    // Webcam.CallbackReturnTypes 
+    callbackReturn: "base64",
+    //Logging 
+    verbose: false
+};
+
 
 let rpiFan = new RPIFanController({
 	pinMode: "RPI",
@@ -44,12 +90,12 @@ io.on('connection', (socket) =>
 		//temperatureFinal, humidityFinal = readingTemp(sensor);
 		//temperatureFinal, humidityFinal = readingTemp(sensor);
 		//socket.broadcast.emit('temp',temperatureFinal);
-		console.log("Reading Temperature.");
+		//console.log("Reading Temperature.");
 		sensorReading = readingTemp(sensor);
-		console.log(sensorReading);
+		//console.log(sensorReading);
 		temperatureFinal = (sensorReading.temperature*9/5+32);
 		humidityFinal=(sensorReading.humidity);
-		console.log(humidityFinal);
+		//console.log(humidityFinal);
 		io.local.emit('temp', temperatureFinal);
 		io.local.emit('humid', humidityFinal);
    	});
@@ -76,7 +122,23 @@ socket.on('fan', function(data)
 		// Close the GPIO connection 
 		//
     	});
-
+const Webcam = NodeWebcam.create( opts );
+ socket.on('updateImage',function(data)
+	{
+	Webcam.capture("public/test_picture", function( err, image ) {
+        	if (err) console.error(err);
+       		io.sockets.emit("updateImage", image);
+       		//console.log("Image taken.", image);
+    	});
+/*
+	NodeWebcam.capture( "public/test_picture", opts, function( err, image ) 
+		{
+		io.sockets.emit("updateImage", image);
+		console.log("Image taken.", image);
+		});
+*/
+	//io.sockets.emit("updateImage", image);
+	});
 });
 
 
