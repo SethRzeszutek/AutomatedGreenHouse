@@ -1,0 +1,459 @@
+body{
+    position: center;
+    font-family: 'Helvitica';
+    /*background-color: #192530;*/
+background: #192530 -moz-radial-gradient(top, #E5D734 0%, #3F7F43 20%, #192530 70%) no-repeat 50% 0%;
+  background: #192530 -webkit-radial-gradient(top, #E5D734 0%, #3F7F43 20%, #192530 70%) no-repeat 50% 0%;
+  background-size: 1200px 600px;
+
+  background: #192530 radial-gradient(top, #E5D734 0%, #3F7F43 20%, #192530 70%) no-repeat 50% 0%;
+/*
+   background: ##192530 -moz-radial-gradient(top, #507aa0 0%, #192530 70%) no-repeat 50% 0%;
+  background: #192530 -webkit-radial-gradient(top, #507aa0 0%, #192530 70%) no-repeat 50% 0%;
+  background-size: 1200px 600px;
+
+  background: #192530 radial-gradient(top, #507aa0 0%, #192530 70%) no-repeat 50% 0%;
+
+  background-size: 1200px 600px;
+*/
+}
+
+h2{
+    font-family: 'Helvitica';
+    font-size: 18px;
+    padding: 10px 20px;
+    color: #575ed8;
+}
+
+h3{
+    font-family: 'Helvitica';
+    position: relative;
+    display: inline-block;
+}
+
+#title{
+	/*text-align: center;*/
+	
+}
+.titleImage{
+
+	display: block;
+    	margin-left: auto;
+    	margin-right: auto;
+    	width: 40%;
+}
+
+
+
+.flex-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /*flex-direction: column;*/
+  flex-wrap: wrap;
+ 
+
+}
+
+
+
+
+#switchbox{
+   /* float:left;#*/
+    display: block;
+    padding: 0px;
+    overflow:hidden;
+}
+
+.iconbox{
+    float:left;
+    padding: 0px 50px 25px 25px;
+}
+
+#iconOrientation{
+    display: block;
+    text-align: center;
+}
+
+#checkboxOrientation{
+    display: block;
+    text-align: center;
+
+
+}
+
+.iconSmall{
+    height: 80px;
+    padding-left: 7px;
+    padding-bottom: 10px;
+}
+.iconLarge{
+    height: 80px;
+    padding-left: 5px;
+    padding-bottom: 10px;
+}
+
+#graphbox{
+    /*float:left;*/
+    margin-top: 25px;
+    padding-left: 150px;
+    padding-right: 150px;
+    display: block;
+    /*background: white;*/
+    /*width: 40%;*/
+}
+
+.thermostat {
+    width: 350px;
+    height: 350px;
+    /*margin: 0 auto;*/
+    background: url(img/Temp.png);
+	background-size: 350px 350px;
+    border-radius: 50%;
+    font-size: 75px;
+    color: white;
+	cursor: pointer;
+    text-align: center;
+    
+}
+
+#tempOutput{
+	font-size: 55px;
+	color: #C0C0C0;
+	text-align: center;
+    	line-height: 0;
+}
+#humidOutput{
+	font-size: 30px;
+	color: #63b8ff;
+	text-align: center;
+    	line-height: 0;
+}
+
+#plantList{
+    float:left;
+	width: 575px;
+	height: 200px;
+	background: black;
+    margin-top: 25px;
+    display: block;
+	color: white;
+   	 width: 40%;
+}
+#plantTable{
+	width: 500px;
+	height: 130px;
+	color: white;
+	overflow: auto;
+}
+#inputForm{
+	position: bottom;
+}
+.inputBox{
+	float:left;
+}
+
+#formButtons{
+	float:left;
+}
+#formBox{
+  float:left;
+	margin-left: 30px;
+}
+#cameraContainer{
+    margin-top: 25px;
+    padding-left: 10px;
+    /*display: block;*/
+    /*background: white;*/
+    width: 40%;
+}
+#imageUpdate{
+	/*margin-left: 50px;*/
+	/*margin-top: 40px;*/
+	border: 1px solid #ddd;
+    	border-radius: 4px;
+	margin-right: 20px;
+	width: 80%;
+}
+
+.buttons {
+  background: #507786;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.buttons:hover {
+  background: #6da4ba;
+  text-decoration: none;
+}
+
+#frame {
+	/*background: linear-gradient(to bottom right, #21A6FF,  #1EE894);*/
+	background: #507786;
+	border-radius: 28px;
+	width: 500px;
+	height: 300px;
+}
+
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #4ED13C;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #63b8ff;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+
+
+
+
+.switch2 {
+  position: relative;
+  display: inline-block;
+  padding-left: 15px;
+  width: 60px;
+  height: 34px;
+}
+
+.rotated-image {
+  /*-webkit-transform: rotate(20deg);
+          transform: rotate(20deg);
+*/
+
+    -webkit-animation: rotation 2s infinite linear;
+}
+
+@-webkit-keyframes rotation {
+		from {
+				-webkit-transform: rotate(0deg);
+		}
+		to {
+				-webkit-transform: rotate(359deg);
+		}
+}
+
+
+/* Hide default HTML checkbox */
+.switch2 input {display:none;}
+
+
+.slider2 {
+  position: absolute;
+  margin-left: 15px;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider2:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider2 {
+  background-color: #4ED13C;
+}
+
+input:focus + .slider2 {
+  box-shadow: 0 0 1px #63b8ff;
+}
+
+input:checked + .slider2:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider2.round {
+  border-radius: 34px;
+}
+
+.slider2.round:before {
+  border-radius: 50%;
+}
+
+
+
+
+
+
+/*------------------------------FORM BOX-----------------------------*/
+/* define height and width of scrollable area. Add 16px to width for scrollbar          */
+div.tableContainer {
+  clear: both;
+ margin-top: 50px;
+  background: white;
+  border: 1px solid #507786;
+  height: 150px;
+  overflow: auto;
+  width: 540px;
+}
+
+/* Reset overflow value to hidden for all non-IE browsers. */
+html > body div.tableContainer {
+  overflow: hidden;
+  width: 540px;
+}
+
+/* define width of table. IE browsers only                 */
+div.tableContainer table {
+  float: left;
+  /* width: 740px */
+}
+
+/* define width of table. Add 16px to width for scrollbar.           */
+/* All other non-IE browsers.                                        */
+html > body div.tableContainer table {
+  width: 556px 
+}
+
+/* set table header to a fixed position. WinIE 6.x only                                       */
+/* In WinIE 6.x, any element with a position property set to relative and is a child of       */
+/* an element that has an overflow property set, the relative value translates into fixed.    */
+/* Ex: parent element DIV with a class of tableContainer has an overflow property set to auto */
+
+
+thead.fixedHeader tr {
+  position: relative;
+}
+
+/* set THEAD element to have block level attributes. All other non-IE browsers            */
+/* this enables overflow to work on TBODY element. All other non-IE, non-Mozilla browsers */
+
+/* make the TH elements pretty */
+thead.fixedHeader th {
+  background: #6996AD;
+  border-left: 1px solid #507786
+  border-right: 1px solid #507786;
+  border-top: 1px solid #507786;
+  font-weight: normal;
+  padding: 4px 3px;
+  text-align: left;
+}
+
+html > body tbody.scrollContent {
+   color: black;
+  display: block;
+  height: 150px;
+  overflow: auto;
+    width: 540px;
+}
+
+
+.scrollContent tr:hover {
+ 	background-color: #ddd;
+}
+
+
+html > body thead.fixedHeader {
+  color: white;
+  display: table;
+  overflow: auto;
+  width: 100%;
+}
+
+/* make TD elements pretty. Provide alternating classes for striping the table */
+/* http://www.alistapart.com/articles/zebratables/                             */
+tbody.scrollContent td,
+tbody.scrollContent tr.normalRow td {
+  background: #fff;
+  border-bottom: none;
+  border-left: none;
+  border-right: 1px solid #ccc;
+  border-top: 1px solid #ddd;
+  padding: 2px 3px 3px 4px;
+}
+
+tbody.scrollContent tr.alternateRow td {
+  background: #eee;
+  border-bottom: none;
+  border-left: none;
+  border-right: 1px solid #ccc;
+  border-top: 1px solid #ddd;
+ }
+
+tbody.scrollContent tr:hover td {
+	background-color: #98B89A;
+}
+
+.selected{
+background: #3F4C40;
+color: white;
+}
+
+td {
+width: 16%;
+}
+

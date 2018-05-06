@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "sql-database-nodejs",
+  "private_key_id": "b72c40cd64813a6392d8c4344cce6e0031144f3a",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDc21prx2thQxnn\ndhL117rHvPtUDtSvbamYFfmMZSzKIneHPKv/OF7TChnAi7KMx+07q/wYZw18zhkJ\nsSqPK5SGD1pvzMv8J62ZYWPqVA3+afP9L6jAvWN8v2m9wbgSWIF4SIBr1zX1FQgA\ns+7A3oIFwSvG0T/Un62J4QQMFil8YrYnP5gn+IMk2rAtRbcA7DxEy25BGcsUOj3j\nJSPbALWthV1HIwq2rJ6/unaOr2HjrLYUgnNzJrnHPGzxt7UFNsjRv/AS+JoKUHuJ\nhn0eNb4ZYd14FBgfU+YPbDVz0podDwGzp+TQQS1pAbleQFiWiy4J0TvbO4QX8NFI\nuASfEJghAgMBAAECggEABxz2etGrqvCFEVAbeLkHvj6fLpwiq/rBc1FD3gp1KJZ3\nGI8y7++iGDRzU2D8cW3P/XPC1QteoxYlNstytjU+XZn5fO/Q4xBpFi9Nj0LBR6Ak\neFNUYU7IOUCV+INYeRjKJLRbFH4UMg5JGXKyHhqcf/Byhz7+igvRhEcPwQ7mq6eX\n4ptiPhJyHIfIRIs5/NJyNE1+lgOpOqkr8yku3Tj3itlSOcZ2y/hknSGz/cILw9z7\npKsk2OJZyOlzPN67pb7UDK5Ug03250vmSYLsiFF8wk0CbV/rdoEgg/viKZFXYgfL\nlRlqqAjiTBXHZGeufeS+sulgXahHsULzWoY+NlT2JQKBgQD9luYCQK+g9wUYVHeL\n7xaFEemZdG2BRu9xnb7yPJacUtxA3cWu2iau/Z+pltymzaX4E99XJNytyPfHubA8\nw1pAMHPWjRSRbXO53e1905ehlUSj8y0rq89x6ODxCrCKle9ElFtjbVXN3TEAf7Vr\n+L833NTql8ktg3CEiUHwm4DqjQKBgQDe9M0Q68eaWf6ckVbpesDhxQFRYygHa6uw\nuskwU5KLoDvDtgX+0HZ2cOWiEY+ocxyp2dokJ9F4W97uQOqxaji7/h/Wf1BYYsqN\nxYbcJoDAVe7d17Jlp0OviTC9yp1SR6P8M+MMYjeXGRJPJejHvKpDiS685hnZeH9g\nTtZhFKvo5QKBgQCYAn1r+kSNM6W9ONzUaARSzjL+RrlhlhjwPUP5xvHtUQowZAAc\n2S35FZVAvmsUHhAQDjGB9lnGXsKQ2bFYKy4Nbj3x7W3X4wlM8EhtdYneVTDpKlr4\nY6wdNyCnvOWonUnpDRlfF2oo1h+KkgM5bsmI/fovib8RZknrWK/LQBvd/QKBgD7T\nFlG1Tqpkv4UYwzfJOj6kB6oKWcY1hcyn5XczpXCotw5/5RKXZToct+hCMIvT2/jU\nhU541eKnaJsUOc3CU7hNdGU5vMcbF155kXXJd7A6xrNGS2OvjTgSXWStikUcIM45\nRLpBls6B5xHcacqWlBexuTTLVe9cr+/QZ0I10/ctAoGAJyHGKGAhC7lXCi/NrHF8\n3H78g6c/icWBuzxaBjTxgAvzHF8vrGAYEU1id3iN526GOkRHARfl9IGvG9SHJU+a\n7eLAcuJBXiWAVvGtOHdi3q+5fhwwG3xsYA+6N+vWPdAggmCj/K/BESwkTxHImDU7\nu+qcSPNFBVdC17q8CXs5KnE=\n-----END PRIVATE KEY-----\n",
+  "client_email": "sql-database-access@sql-database-nodejs.iam.gserviceaccount.com",
+  "client_id": "107219742077544087934",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/sql-database-access%40sql-database-nodejs.iam.gserviceaccount.com"
+}

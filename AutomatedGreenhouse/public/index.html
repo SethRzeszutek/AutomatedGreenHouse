@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Greenhouse</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <link href="styles.css" rel="stylesheet" />
+	
+    </head>
+    <body>
+	<div class="title">
+		<img class ="titleImage" src="img/greenhouseTitle.png">
+	</div>
+    	<div class="flex-container">
+         	<div id="switchBox">
+                <div class="iconbox">
+                    <div class="iconOrientation">
+                        <img id="lightImg" class="iconSmall" src="img/lightoff.png" alt="lightoff">
+                    </div>
+                    <div class="checkboxOrientation">
+                        <label id="light" class="switch"><input type="checkbox" onclick="changeImage(this,'lightImg','img/lighton.png','img/lightoff.png')"><span class="slider round"></span></label>
+                    </div>
+                </div>
+            
+                <div class="iconbox">
+                    <div class="iconOrientation">
+                        <img id="waterImg" class="iconSmall" src="img/wateroff.png" alt="wateroff">
+                    </div>
+                    <div class="checkboxOrientation">
+                        <label id="water" class="switch"><input type="checkbox" onclick="changeImage(this,'waterImg','img/wateron.png','img/wateroff.png')"><span class="slider round"></span></label>
+                    </div>
+                </div>
+                <div class="iconbox">
+                    <div class="iconOrientation">
+                        <img id="fanImg" class="iconLarge" src="img/fanoff.png" alt="fanoff">
+                    </div>
+                    <div class="checkboxOrientation">
+                        <label id="fanControl" class="switch2"><input type="checkbox" id="fan" onclick="changeImageSpin(this,'fanImg','img/fanon.png','img/fanoff.png')"><span class="slider2 round"></span></label>
+                    </div>
+                </div>
+                <div class="iconbox">
+                    <div class="iconOrientation">
+                        <img id="autoImg" class="iconLarge" src="img/gearoff.png" alt="gearoff">
+                    </div>
+                    <div class="checkboxOrientation">
+                        <label id="autoControl" class="switch2"><input type="checkbox" id="auto" onclick="changeImageSpin(this,'autoImg','img/gearon.png','img/gearoff.png')"><span class="slider2 round"></span></label>
+                    </div>
+                </div>
+            </div>
+            
+        <div id="formBox">
+            <div id="tableContainer" class="tableContainer">
+        		<table id="myTable" border="0" cellpadding="0" cellspacing="0" width="100%" class="scrollTable">
+        			<thead class="fixedHeader">
+        				<tr>
+        					<th width="16%">Plant Name</th>
+        					<th width="16%">Temperature</th>
+        					<th width="16%">Humidity</th>
+        				</tr>
+        			</thead>
+        		
+        		<table id="plantTable" border="0" cellpadding="0" cellspacing="0" width="100%" class="scrollTable">
+        			<thead class="fixedHeader">
+        				<tr>
+        				</tr>
+        			</thead>
+        		
+        			<tbody id="testCase" class="scrollContent">
+        				<tr onclick = "selectRow()">
+        					<td width="16%"></td>
+        					<td width="16%"></td>
+        					<td width="16%"></td>
+        				</tr>
+					<tr id="deleteRows">
+					</tr>
+        			</tbody>
+                </table>
+        		</table>
+        	</div>
+        	<div>
+        		<form id="inputForm">
+        			<div class ="inputBox">
+         		 		<input type="text" placeholder="Plant Name" id="plantName"><br>
+        			</div>
+        			<div class ="inputBox">
+          				<input type="text"  placeholder="Temperature" id="inputTemp"><br>
+        			</div>
+        			<div class ="inputBox">
+        				<input type="text"   placeholder="Humidity" id="inputHumid"><br>
+        			</div>
+          			<!--    <input type="submit" value="Submit">    -->
+        		</form>
+        		<button class="formButtons buttons"  onclick="addToTable()">Add</button>
+			<button class="formButtons buttons"  onclick="">Select</button>
+			<button class="formButtons buttons"  onclick="delete_row()">Remove</button>
+			<button class="formButtons buttons"  onclick="loadTable()">Load</button>
+			<button class="formButtons buttons"  id="saveData" onclick="">Save</button>
+			<!--<input type="file" id="files"  class="formButtons buttons" name="files[]" />-->
+            </div>
+        </div>
+         <div id="graphbox">
+                	<button id="getTemp" class='thermostat' >
+                        <div id="tempOutput"></div>
+    			        <div id="humidOutput"></div>
+                	</button>
+            </div>   
+        <div id="cameraContainer">
+    			<img id="imageUpdate" alt="captured image" src=""/>
+    		<button id="getUpdate" class="buttons">Update</button>
+    	</div>
+    </div>
+    </body>
+    <script src="/client.js"/></script>
+
+
+<script>
+//function adds to the table
+function addToTable() {
+    	var table = document.getElementById("testCase");
+	var plantName = document.getElementById("plantName").value;
+	var inputTemp = document.getElementById("inputTemp").value;
+	var inputHumid = document.getElementById("inputHumid").value;
+
+	if((plantName==""||plantName==null) || (inputTemp==""||inputTemp==null)&&(inputHumid=="number"||inputHumid==null))
+	{
+		alert("Check your input, empty spaces are not allowed!");
+	} else {
+    		var row = table.insertRow(0);
+    		var cell1 = row.insertCell(0);
+    		var cell2 = row.insertCell(1);
+		var cell3 = row.insertCell(2);
+		console.log(plantName);
+    		cell1.innerHTML = plantName;
+    		cell2.innerHTML = inputTemp;
+		cell3.innerHTML = inputHumid;
+		document.getElementById("inputForm").reset();
+	}
+}
+function loadTable(){
+
+	var dataArray = ["Heirloom Tomatoes", 70, 30, "Seedless Watermelon", 72, 60, "Cucumber", 65, 50, "Snap Peas", 75, 45, "Broccoli", 67, 80, "Green Peppers", 76, 56];
+	
+	var x=0;
+	for(var i = 0; i < dataArray.length/3; i++)
+	{
+		var table = document.getElementById("testCase");
+		var row = table.insertRow(0);
+    		var cell1 = row.insertCell(0);
+    		var cell2 = row.insertCell(1);
+		var cell3 = row.insertCell(2);
+    		cell1.innerHTML = dataArray[0 + x];
+    		cell2.innerHTML =dataArray[1 + x];
+		cell3.innerHTML = dataArray[2+ x];
+		document.getElementById("inputForm").reset();
+		x+=3;
+	}
+}
+
+
+function selectRow(){
+	if(this.className == "selected")
+	{
+		this.classList.remove("selected");
+	}
+	else
+	{
+	this.className= "selected";
+	}
+}
+function delete_row()
+{
+	$("#testCase tr td").remove(); 
+ 	//document.getElementById("row"+no+"").outerHTML="";
+}
+
+$("#testCase tr td").click(function() {
+    var selected = $(this).hasClass("selected");
+    $("#testCase tr td").removeClass("selected");
+    if(!selected)
+            $(this).addClass("selected");
+});
+
+
+</script>
+    <!-- removed slash from before chat.js-->
+</html>
